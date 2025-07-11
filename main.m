@@ -712,6 +712,12 @@ end
 
 %% METRICS
 
-
-        
+disp('mean MFE')
+mean(mfeFINALE)
+disp('median MFE')
+median(mfeFINALE)
+disp('std MFE')
+std(mfeFINALE)
+disp('mode MFE')
+mode(mfeFINALE)
 
