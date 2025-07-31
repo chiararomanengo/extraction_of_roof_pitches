@@ -8,7 +8,7 @@ The ```vlp``` directory contains the pont clouds that represent buildings of an 
 
 Finally, the ```data``` directory contains building footprints corresponding to the area 3820 in the form of standard ESRI Shapefiles.
 
-All the data are publicly available in the public geoportal (https://mappe.comune.genova.it/MapStore2/#/viewer/1000003072), hosted by the Genova Municipality
+All the data are publicly available in the public geoportal (https://mappe.comune.genova.it/MapStore2/#/viewer/1000003072), hosted by the Genova Municipality.
 
 
 ## Basic Usage
