@@ -16,8 +16,8 @@ All the data are publicly available in the public geoportal (https://mappe.comun
 ## How to use it
 To use this method, you can simply run the ```main.m``` file in Matlab. 
 
-The input are .las files containing the point cloud representing a building. 
-The point cloud is then processed and the method extracts the points belonging to each roof pitch, the contour polygon and the tilt angles with respect to the horizontal and azimuthal planes.  
+The input is a set of .las files containing the point clouds representing buildings of a city (or a part of it). 
+Each point cloud representing a building is processed and the method extracts the points belonging to each roof pitch, its contour polygon and the tilt angles with respect to the horizontal and azimuthal planes.  
 
 The output is, for each building, a folder that contains:
 - a set of .off files that represent polygonal meshes encoding the geometry of each roof pitch;
