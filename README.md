@@ -22,3 +22,6 @@ Each point cloud representing a building is processed and the method extracts th
 The output is, for each building, a folder that contains:
 - a set of .off files that represent polygonal meshes encoding the geometry of each roof pitch;
 - a .txt file containing the tilt angles of each roof pitch.
+
+## Reproduce paper results
+The algorithm computes and prints the staistics of the mean fitting error (MFE) introduced at the end of Section 4.2 for the area of Genoa, that is the mean, median, standard deviation and mode.
