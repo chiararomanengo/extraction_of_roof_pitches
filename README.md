@@ -1,6 +1,6 @@
 # extraction_of_roof_piches
 
-This repository contains a Matlab library for extracting roof pitches form a point cloud that represent a single building and characterizing them via a planes fitting algorithm based on the Hough transform. 
+This repository contains a Matlab library for extracting roof pitches from a LiDAR point cloud that represent a single building and characterizing them via a planes fitting algorithm based on the Hough transform. 
 
 ## Content of the repository
 
