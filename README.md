@@ -24,4 +24,4 @@ The output is, for each building, a folder that contains:
 - a .txt file containing the tilt angles of each roof pitch.
 
 ## Reproduce paper results
-The algorithm computes and prints the staistics of the mean fitting error (MFE) introduced at the end of Section 4.2 for the area of Genoa, that is the mean, median, standard deviation and mode.
+The algorithm computes and prints the statistics of the mean fitting error (MFE) introduced at the end of Section 4.2 for the area of Genoa, that is the mean, median, standard deviation and mode.
