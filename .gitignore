@@ -6,6 +6,7 @@
 
 code/CGAL-apps-scaline-normals
 code/CGAL-apps-shape-detection-reg-growing
+code/buildings_Segm/
 
 # Compiled Object files
 *.slo

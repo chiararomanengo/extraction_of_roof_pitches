@@ -13,4 +13,4 @@ cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_RUNTIME_OUTPUT_DIRECTORY=$output_path -DCMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE=$output_path 
 make
 
-echo "done!"
+echo "CGAL apps done!"
