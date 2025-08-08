@@ -1,6 +1,6 @@
 # extraction_of_roof_piches
 
-This repository contains a Matlab library for extracting roof pitches form a point cloud that represent a single building and characterizing them via a planes fitting algorithm based on the Hough transform. 
+This repository contains a Matlab library for extracting roof pitches from a LiDAR point cloud that represent a single building and characterizing them via a planes fitting algorithm based on the Hough transform. 
 
 ## Content of the repository
 
@@ -24,4 +24,4 @@ The output is, for each building, a folder that contains:
 - a .txt file containing the tilt angles of each roof pitch.
 
 ## Reproduce paper results
-The algorithm computes and prints the staistics of the mean fitting error (MFE) introduced at the end of Section 4.2 for the area of Genoa, that is the mean, median, standard deviation and mode.
+The algorithm computes and prints the statistics of the mean fitting error (MFE) introduced at the end of Section 4.2 for the area of Genoa, that is the mean, median, standard deviation and mode.
