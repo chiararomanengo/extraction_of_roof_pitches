@@ -42,7 +42,7 @@ for i=1:size(Files_cell,1) % for each point cloud representing a building
             fclose(fileID);
             
             outFile=strcat(dirName, '/building_norm',  int2str(aus), '.xyz');
-            command = strcat('cgal-scaline-normals.exe -i',{' '}, FileNames,' -o ',{' '}, outFile);
+            command = strcat('./CGAL-apps-scaline-normals -i',{' '}, FileNames,' -o ',{' '}, outFile);
             command=command{1,1};
             status = system( sprintf(command) );
             
@@ -82,7 +82,7 @@ for i=1:size(Files_cell,1) % for each point cloud representing a building
             end
              
             % segmentation of the point cloud into planes
-            command = strcat('fit_region_growing-fit.exe -i',{' '}, nameFile,' -o ',{' '}, outFile, ' -a 10 -s',{' '}, int2str(num));
+            command = strcat('./CGAL-apps-shape-detection-reg-growing -i',{' '}, nameFile,' -o ',{' '}, outFile, ' -a 10 -s',{' '}, int2str(num));
             command=command{1,1};
             status = system( sprintf(command) );
                       
