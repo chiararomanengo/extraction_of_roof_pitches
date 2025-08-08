@@ -2,6 +2,7 @@ clc; clear all; close all
 
 %% extraction of roof pitches
 
+%dirname=strcat('../../../PBF-FR-H3D-results/');
 dirname=strcat('../vlp/');
 Files_cell=dir(dirname);
 Files_cell(1:2)=[];
