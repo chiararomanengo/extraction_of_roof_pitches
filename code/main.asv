@@ -407,13 +407,41 @@ for i=1:size(Files_cell,1) % for each point cloud representing a building
 
                         
                         if size(res_fin,1)<=round(size(result,1)*0.4) || size(res_fin,1)<=3
+
                             res_fin=result;
                         end
                         if norm(res_fin(1,:)-res_fin(end,:))>10^(-1)
                             res_fin=[res_fin; res_fin(1,:)];
                         end
-                                               
-                        % delete duplicate vertices
+                        
+%                         Pin=res_fin(end-2,:);
+%                         P0=res_fin(end-1,:);
+%                         P1=res_fin(end,:);
+%                         v1=P1-P0;
+%                         v2=Pin-P0;
+%                         dot = v1(1)*v2(1) + v1(2)*v2(2);
+%                         det = v1(1)*v2(2) - v1(2)*v2(1);
+%                         theta = atan2(det, dot);
+%                         if theta<0
+%                             theta = 2*pi+theta;
+%                         end
+%                         if (theta<pi/4 || theta>3*pi/2)
+%                             res_fin(end-1,:)=[];
+%                         end
+%
+% 
+
+%                         figure
+%                         hold on
+%                         axis equal
+%                         scatter(aus(:,1),aus(:,2),'.k'); %scatter(border(ind_aus,1),border(ind_aus,2),'*r')
+%                          scatter(aus(k,1),aus(k,2),'*b');
+%                         plot(res_fin(:,1), res_fin(:,2),'LineWidth',2)
+%                         plot(res_fin(:,1), res_fin(:,2),'*r')
+
+
+                        
+                        % elimino vertici duplicati
                         aus_aus=res_fin(1,:);
                         res_fin_aus=aus_aus;
                         for t=2:size(res_fin,1)
@@ -423,6 +451,13 @@ for i=1:size(Files_cell,1) % for each point cloud representing a building
                             aus_aus=res_fin(t,:);
                         end
                         res_fin=res_fin_aus;
+% 
+%                         figure(s)
+%                         hold on
+%                         axis equal
+%                         scatter(aus(:,1),aus(:,2),'.', 'MarkerEdgeColor', [rand rand rand]); %scatter(border(ind_aus,1),border(ind_aus,2),'*r')
+%                         plot(res_fin(:,1), res_fin(:,2))
+%                         plot(res_fin(:,1), res_fin(:,2),'*r')
 
                         res_fin(end,:)=[];
 
@@ -432,14 +467,24 @@ for i=1:size(Files_cell,1) % for each point cloud representing a building
                             result=res_fin;
                         end
                         aus=segment{s,1};
-                        
-                        polygons=[polygons; result];
-                        lab_pol=[lab_pol; s];
+%                         figure(s)
+%                         hold on
+%                         axis equal
+%                         scatter3(aus(:,1),aus(:,2),aus(:,3),'.', 'MarkerEdgeColor', [rand rand rand]); scatter3(aus(k,1),aus(k,2),aus(k,3),'*r')
+%                         scatter3(result(:,1), result(:,2),result(:,3),'*b')
+                        %            index=[index; s];
+
+                        % potrebbe essere un buon controllo il numero di
+                        % vertici trovati insieme alla densità?
+                        %                         dens=[dens; density];
+%                         if density>=20 || size(res_fin,1)<=10
+                            polygons=[polygons; result];
+                            lab_pol=[lab_pol; s];
+%                         end
                     end
                 end
             end
             
-            % insert internal boundary (holes), if it exists
             holes={};
             lab_holes=[];
             M = shaperead('../data/edifici-3820.shp');
@@ -474,6 +519,9 @@ for i=1:size(Files_cell,1) % for each point cloud representing a building
                 for t=1:size(polygons,1)
                     if lab_pol(t)~=s  
                         p=polygons{t,1};
+%                         if abs(n(3))<0.99
+%                             p=p*R;
+                        %                         end
                         [I,D] = knnsearch(aus(:,1:2),p(:,1:2));
                         if numel(find(D<tresh))==numel(D)
                             lab_holes=[lab_holes; s];
@@ -499,11 +547,10 @@ for i=1:size(Files_cell,1) % for each point cloud representing a building
                 end
             end
             
-            % create output folder
             dirNames=strcat('./polygons/building',  int2str(INDEX_ID));
             [status, msg, msgID] = mkdir(dirNames);
             
-            % for each pitch belonging to the i-roof, create roof pitch mesh
+
             for s=1:numel(lab_pol)
                 nameFile=strcat(dirNames, '/polygons', int2str(lab_pol(s)),'.off');
                 fileID = fopen(nameFile,'w');
@@ -560,8 +607,6 @@ for i=1:size(Files_cell,1) % for each point cloud representing a building
                 end
             end
 
-            % create .txt files cotaining the angles associated to each
-            % roof pitch
             angle_aus=angle_fin;
             angle_aus(angle_fin(:,1)>=90,1)=angle_fin(angle_fin(:,1)>=90,1)-90;
             angle_aus(angle_fin(:,1)<90,1)=angle_fin(angle_fin(:,1)<90,1)+270;
@@ -579,7 +624,8 @@ for i=1:size(Files_cell,1) % for each point cloud representing a building
             fprintf(fileID,'# id Nord_azimut horiz_azimut');
             writematrix(aus,nameFile,'WriteMode','append')
             fclose(fileID);
-            
+            % % fprintf(fileID,'%12f %12f %12f\n',aus');
+
             aus=zeros(numel(lab_pol),3);
             aus(:,1)=lab_pol;
             for s=1:numel(lab_pol)
@@ -604,7 +650,11 @@ for i=1:size(Files_cell,1) % for each point cloud representing a building
                 fprintf(fileID,'\n');
                 fclose(fileID);
             end
-                                
+            
+            
+            
+            %             polygons=[polygons; PP1; PP2]; da mettere qui!!
+            
         end
     end
     
@@ -614,13 +664,10 @@ end
 
 disp('mean MFE')
 mean(mfeFINALE)
-
 disp('median MFE')
 median(mfeFINALE)
-
 disp('std MFE')
 std(mfeFINALE)
-
 disp('mode MFE')
 mode(mfeFINALE)
 
