@@ -4,6 +4,9 @@
 *.user
 *.asv
 
+code/CGAL-apps-scaline-normals
+code/CGAL-apps-shape-detection-reg-growing
+
 # Compiled Object files
 *.slo
 *.lo
