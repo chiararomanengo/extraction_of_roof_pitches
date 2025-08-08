@@ -443,7 +443,7 @@ for i=1:size(Files_cell,1) % for each point cloud representing a building
             % insert internal boundary (holes), if it exists
             holes={};
             lab_holes=[];
-            M = shaperead('../data/edifici-3820.shp');
+            M = shaperead('../../data/footprints/edifici-3820.shp');
             X=M(INDEX_ID+1).X;
             Y=M(INDEX_ID+1).Y;
             X=X-trX;
