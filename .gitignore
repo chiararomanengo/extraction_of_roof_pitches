@@ -2,6 +2,7 @@
 *.d
 *.DS_Store
 *.user
+*.asv
 
 # Compiled Object files
 *.slo

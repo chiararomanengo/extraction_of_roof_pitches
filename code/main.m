@@ -2,8 +2,8 @@ clc; clear all; close all
 
 %% extraction of roof pitches
 
-%dirname=strcat('../../../PBF-FR-H3D-results/');
-dirname=strcat('../vlp/');
+dirData='../../data/';
+dirname=strcat(dirData,'output_partitioning/');
 Files_cell=dir(dirname);
 Files_cell(1:2)=[];
 mfeFINALE=[];
@@ -443,7 +443,8 @@ for i=1:size(Files_cell,1) % for each point cloud representing a building
             % insert internal boundary (holes), if it exists
             holes={};
             lab_holes=[];
-            M = shaperead('../../data/footprints/edifici-3820.shp');
+            shapeName=strcat(dirData,'footprints/edifici-3820.shp');
+            M = shaperead(shapeName);
             X=M(INDEX_ID+1).X;
             Y=M(INDEX_ID+1).Y;
             X=X-trX;
@@ -501,7 +502,7 @@ for i=1:size(Files_cell,1) % for each point cloud representing a building
             end
             
             % create output folder
-            dirNames=strcat('./polygons/building',  int2str(INDEX_ID));
+            dirNames=strcat(dirData,'output_extraction/building',  int2str(INDEX_ID));
             [status, msg, msgID] = mkdir(dirNames);
             
             % for each pitch belonging to the i-roof, create roof pitch mesh
