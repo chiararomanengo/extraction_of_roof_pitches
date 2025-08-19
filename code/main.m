@@ -18,7 +18,8 @@ for i=1:size(Files_cell,1) % for each point cloud representing a building
         Files(1:2)=[];
         FileNames=Files(1).name;
         
-        aus=double(string(Files_cell(i).name));
+        %aus=double(string(Files_cell(i).name));
+        aus=str2double(regexp(Files_cell(i).name, '\d+$', 'match'));
         INDEX_ID=aus;
         
         % read .las file containing the point cloud representing a building
@@ -608,8 +609,9 @@ for i=1:size(Files_cell,1) % for each point cloud representing a building
             end
                                 
         end
-    end
-    
+        
+    fprintf('File %s done!\n\n\n', FileNames);
+    end    
 end
 
 %% METRICS
@@ -625,4 +627,3 @@ std(mfeFINALE)
 
 disp('mode MFE')
 mode(mfeFINALE)
-

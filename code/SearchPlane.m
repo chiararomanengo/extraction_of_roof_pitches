@@ -23,7 +23,7 @@ try
     
     [coord, maxCoord]=PlanesHT0_search(xyz);
     
-    maxCoord
+    % maxCoord
     % In case, the number of fitting plane is higher than 1, the following
     % step fixes the one with lower approximation error (MFE)
     
