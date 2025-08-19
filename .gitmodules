@@ -1,0 +1,3 @@
+[submodule "CGAL-apps"]
+	path = CGAL-apps
+	url = git@github.com:DanielaCabiddu/CGAL-apps.git
