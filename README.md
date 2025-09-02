@@ -9,7 +9,7 @@ The ```code``` directory contains our method that is described in Sections 5.2-5
 ## How to use it
 To use this method, you can simply run the ```main.m``` file in Matlab. 
 
-The input is a set of .las files containing the point clouds representing buildings of a city (or a part of it). 
+The input is a set of .las files containing the point clouds representing buildings of a city (or a part of it). The input can be generated using https://github.com/DanielaCabiddu/PiP-partitioning.git.
 Each point cloud representing a building is processed and the method extracts the points belonging to each roof pitch, its contour polygon and the tilt angles with respect to the horizontal and azimuthal planes.  
 
 The output is, for each building, a folder that contains:
